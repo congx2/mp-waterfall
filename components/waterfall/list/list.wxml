@@ -1,0 +1,3 @@
+<view class="waterfall-list" style="height:{{height}}px;">
+  <slot />
+</view>

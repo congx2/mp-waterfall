@@ -1,0 +1,9 @@
+<!-- <view>index</view>
+<mp-html /> -->
+<view class="container">
+  <waterfall-list gap="24rpx">
+    <waterfall-item wx:for="{{list}}" wx:key="index">
+      <view class="item" style="height:{{item.height}}rpx;background:{{item.color}};"></view>
+    </waterfall-item>
+  </waterfall-list>
+</view>

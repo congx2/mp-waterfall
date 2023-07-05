@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-html": "../../components/mp-html/mp-html",
+    "waterfall-list": "../../components/waterfall/list/list",
+    "waterfall-item": "../../components/waterfall/item/item"
+  }
+}
