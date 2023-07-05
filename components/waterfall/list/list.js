@@ -83,7 +83,6 @@ Component({
       }
       if (typeof gap === 'string') {
         const list = gap.trim().split(/\s+/).filter(item => item.trim().length)
-        console.log('list: ', list)
         const rowGap = list[0]
         const colGap = list.length > 1 ? list[1] : rowGap
         const row = toPixel(rowGap, 0)
@@ -159,27 +158,18 @@ Component({
       const offset = []
       const heights = []
       for (let i = 0; i < size; i++) {
-        console.group()
-        console.log('columnWidth: ', columnWidth)
-        console.log('i: ', i)
-        const item = items[i]
         const { height } = rects[i]
         const row = Math.floor(i / columns)
         const column = row < 1 ? i : heights.indexOf(Math.min.apply(null, heights))
-        console.log('row: ', row)
-        console.log('column: ', column)
-        const py = row < 1 ? 0 : heights[column]
-        const x = Math.floor(column * columnWidth + gap.column * column)
-        const y = py
         const ph = row < 1 ? 0 : heights[column]
-        const h = py + height + (i < size - columns ? gap.row : 0)
-        console.log('x: ', x)
-        console.log('y: ', y)
+        const x = Math.floor(column * columnWidth + gap.column * column)
+        const y = ph
+        const h = ph + height + gap.row
         heights[column] = h
         offset[i] = { x, y }
         console.groupEnd()
       }
-      return { offset, height: Math.max.apply(null, heights) }
+      return { offset, height: Math.max.apply(null, heights) - gap.row }
     },
     getListModeOffset(items) {
 
